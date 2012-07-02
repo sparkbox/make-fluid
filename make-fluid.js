@@ -2,10 +2,11 @@
 
 var all = document.getElementsByTagName("*");
 
+var widths;
+
 for (var i=0, max=all.length; i < max; i++) {
-  var parentWidth = all[i].style.width;
-  if (i==10) {
-    alert(parentWidth);
-  }
-  // document.body.appendChild('<b>'parentWidth);
+  width += all[i].style.width + " | ";
 }
+
+alert("widths for you to see:\n" + width);
+  // document.body.appendChild('<b>'parentWidth);
