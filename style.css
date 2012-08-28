@@ -1,0 +1,14 @@
+body {
+  background: #bebebe;
+  width: 1024px;
+}
+
+section {
+  background: #948787;
+  width: 900px;
+}
+
+p {
+  background: #fff;
+  /*width: 500px;*/
+}

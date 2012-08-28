@@ -1,12 +1,30 @@
 // document.body.setAttribute("style", "background-color: red;");
+fluid = {
+  all: document.getElementsByTagName("*"),
 
-var all = document.getElementsByTagName("*");
+  adjustWidth: function( el ) {
+    var parent = el.parentNode;
 
-var widths;
+    if ( parent == document ) {
+      parentWidth = document.width;
+    } else {
+      var parentStyle = document.defaultView.getComputedStyle( parent, null );
+      var parentWidth = parseInt( parentStyle.getPropertyCSSValue( "width" ).cssText, 10 );
+    }
 
-for (var i=0, max=all.length; i < max; i++) {
-  width += all[i].style.width + " | ";
-}
+    var style = document.defaultView.getComputedStyle( el, null );
+    var width = parseInt( style.getPropertyCSSValue( "width" ).cssText, 10 );
 
-alert("widths for you to see:\n" + width);
-  // document.body.appendChild('<b>'parentWidth);
+    el.style.width = ( width / parentWidth * 100 ) + "%";
+  },
+
+  init: function() {
+    for ( var i = 0; i < fluid.all.length; i++ ) {
+      console.log( "i: " + i );
+      console.log( fluid.all[ i ].nodeName );
+      fluid.adjustWidth( fluid.all[ i ] );
+    }
+  }
+};
+
+fluid.init();
