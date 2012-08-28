@@ -1,6 +1,6 @@
 // document.body.setAttribute("style", "background-color: red;");
 fluid = {
-  all: document.getElementsByTagName("*"),
+  all: document.body.getElementsByTagName("*"),
 
   adjustWidth: function( el ) {
     var parent = el.parentNode;
@@ -19,11 +19,13 @@ fluid = {
   },
 
   init: function() {
+    document.body.style.width = window.innerWidth;
+
     for ( var i = 0; i < fluid.all.length; i++ ) {
-      console.log( "i: " + i );
-      console.log( fluid.all[ i ].nodeName );
       fluid.adjustWidth( fluid.all[ i ] );
     }
+
+    document.body.style.width = "100%";
   }
 };
 
